@@ -19,7 +19,7 @@ $(document).ready(function() {
         $.ajax({
             url: 'http://157.230.17.132:4017/sales',
             method: 'POST',
-            data: JSON.stringify({"salesman": numeroVenditore, "amount": valoreInput, "date": dateEstrapolata}),
+            data: {"salesman": numeroVenditore, "amount": valoreInput, "date": dateEstrapolata},
             success: function(data) {
                 trovaGrafico();
             }
