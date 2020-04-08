@@ -28,3 +28,11 @@ canvas {
     margin: 50px;
     text-transform: capitalize;
 }
+
+.selezione {
+    margin-top: 100px;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -17,6 +17,18 @@
 
         <div class="container-fullwidth">
             <div class="container">
+                <div class="selezione">
+                    <select id="selectVenditore">
+                        <option value="" disabled selected>Seleziona venditore</option>
+                        <option value="Marco">Marco</option>
+                        <option value="Giuseppe">Giuseppe</option>
+                        <option value="Riccardo">Riccardo</option>
+                        <option value="Roberto">Roberto</option>
+                    </select>
+                    <input placeholder="Valore vendita" id="valore-dati-vendita">
+                    <input type="date" id="select-date" min="2017-01-01" max="2017-12-31">
+                    <button id="invia-dati">Invia dati</button>
+                </div>
                 <canvas id="vendite-lineare"></canvas>
                 <canvas id="vendite-torta"></canvas>
             </div>

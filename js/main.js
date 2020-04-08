@@ -2,6 +2,39 @@ $(document).ready(function() {
 
     trovaGrafico();
 
+    $('#invia-dati').on('click', function(event) {
+        $('#vendite-lineare').empty();
+        $('#vendite-torta').empty();
+        var valoreInput = parseInt($('#valore-dati-vendita').val());
+        var valoreInputInt = parseInt(valoreInput);
+        var ritornaValore = ritornaNumero(valoreInputInt);
+        var dataInserita = $('#select-date').val();
+        var dateInserita = moment(new Date(dataInserita));
+        var dateEstrapolata = dateInserita.format('DD/MM/YYYY');
+        var numeroVenditore = $('#selectVenditore').val();
+        var oggettoDaInserire = {};
+        // console.log(oggettoDaInserire);
+        // console.log(valoreInput);
+
+        $.ajax({
+            url: 'http://157.230.17.132:4017/sales',
+            method: 'POST',
+            data: JSON.stringify({"salesman": numeroVenditore, "amount": valoreInput, "date": dateEstrapolata}),
+            success: function(data) {
+                trovaGrafico();
+            }
+        })
+
+    });
+
+    function ritornaNumero(valore) {
+        if(isNaN(valore)) {
+            return 0;
+        } else {
+            return valore;
+        }
+    };
+
     function trovaGrafico() {
         $.ajax({
             url: 'http://157.230.17.132:4017/sales',
