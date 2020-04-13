@@ -53,13 +53,13 @@ $(document).ready(function() {
                     if(valoriLinea[meseVendita] === undefined) {
                         valoriLinea[meseVendita] = 0;
                     }
-                    valoriLinea[meseVendita] += singolaVendita.amount;
+                    valoriLinea[meseVendita] += parseInt(singolaVendita.amount);
 
                     var venditore = singolaVendita.salesman;
                     if(valoriTorta[venditore] === undefined) {
                         valoriTorta[venditore] = 0;
                     }
-                    valoriTorta[venditore] += singolaVendita.amount;
+                    valoriTorta[venditore] += parseInt(singolaVendita.amount);
                     //ABBIAMO DATO VALORI AI DUE GRAFICI SU VENDITORI, VENDITE E MESE
                 }
                 var labelsMesi = [];
@@ -119,6 +119,16 @@ $(document).ready(function() {
                             backgroundColor: ['lightgreen', 'lightblue', 'lightyellow', 'grey']
                         }],
                         labels: labelsVenditore
+                    },
+                    options: {
+                        responsive: true,
+                        tooltips: {
+                            callbacks: {
+                                label: function(tooltipItem, data) {
+                                    return data['labels'][tooltipItem['index']] + ': ' + data['datasets'][0]['data'][tooltipItem['index']] + '%';
+                                }
+                            }
+                        }
                     }
                 });
             },
